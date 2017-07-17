@@ -2,6 +2,7 @@
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
+using SFML_Test.Enemies;
 using SFML_Test.Shapes.MapParts;
 using SFML_Test.Shapes.Player;
 
@@ -27,6 +28,8 @@ namespace SFML_Test
             this._entities.Add(this._bounds);
 
             this.AddWalls();
+            
+            this._entities.Add(new BaseEnemy(this._gameLoop.Window, this));
 
             this._player = new Player(this._gameLoop.Window, this);
             this._entities.Add(this._player);
@@ -93,9 +96,18 @@ namespace SFML_Test
 
         public void Draw()
         {
-            foreach (var currentEntity in this._entities)
+            for (int i = 0; i < this._entities.Count; i++)
             {
-                currentEntity.Draw();
+                var current = this._entities[i];
+
+                if (current.CanBeRemoved())
+                {
+                    this._entities.Remove(current);
+                    continue;
+                }
+
+                current.Draw();
+                
             }
         }
 

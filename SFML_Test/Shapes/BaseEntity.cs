@@ -21,5 +21,10 @@ namespace SFML_Test
         {
             return this.Shape.GetGlobalBounds().Intersects(shape.GetGlobalBounds());
         }
+
+        public virtual bool CanBeRemoved()
+        {
+            return false;
+        }
     }
 }

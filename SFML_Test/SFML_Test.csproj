@@ -56,7 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ColorExtension.cs" />
     <Compile Include="Shapes\BaseEntity.cs" />
+    <Compile Include="Shapes\Enemies\BaseEnemy.cs" />
     <Compile Include="Shapes\MapParts\Bounds.cs" />
     <Compile Include="Common\Direction.cs" />
     <Compile Include="GameLoop.cs" />

@@ -168,7 +168,7 @@ namespace SFML_Test.Shapes.Player.Abilities
             return shape;
         }
 
-        public bool CanBeRemoved()
+        public override bool CanBeRemoved()
         {
             return this._lazorTime <= 0;
         }

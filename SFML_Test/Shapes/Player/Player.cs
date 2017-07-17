@@ -23,7 +23,11 @@ namespace SFML_Test.Shapes.Player
         public Player(RenderWindow window, Map map)
             : base(window, map)
         {
-            this.Shape = new CircleShape(15, 8) { Position = new Vector2f(500, 500) };
+            this.Shape = new CircleShape(15, 8)
+            {
+                Position = new Vector2f(500, 500),
+                FillColor = Color.Magenta
+            };
 
             this.Lazors = new List<Lazor>();
         }
@@ -97,10 +101,10 @@ namespace SFML_Test.Shapes.Player
 
         public void FireLazor()
         {
-            if (this.IsLazorOnCooldown)
+            if (this.IsLazorOnCooldown || this.Lazors.Count >= 5)
                 return;
 
-            this.Lazors.Add(new Lazor(this.Window, this.Map, this, BeamTypes.Cone));
+            this.Lazors.Add(new Lazor(this.Window, this.Map, this, BeamTypes.Straight));
             this._lazorCooldown = (int)TimeSpan.FromSeconds(2).TotalMilliseconds;
         }
 
